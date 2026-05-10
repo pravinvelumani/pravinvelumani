@@ -1,0 +1,21 @@
+Date from timestamp:
+--------------------
+Date +'%Y-%m-%d %H:%M:%S'-d "@timestamp"
+
+sh-5.0# date +%s
+1700518641
+
+sh-5.0# date +'%Y-%m-%d %H:%M:%S'
+2023-11-20 16:17:34
+sh-5.0#
+sh-5.0# date +'%Y-%m-%d %H:%M:%S %Z'
+2023-11-20 16:17:40 CST
+sh-5.0#
+
+sh-5.0# TZ=IST-5:30 date
+Tue Nov 21 03:50:10 IST 2023
+
+sh-5.0#  date
+Mon Nov 20 16:20:17 CST 2023
+sh-5.0#
+-------------------------------------
