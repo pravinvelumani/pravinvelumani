@@ -1,0 +1,53 @@
+Types:
+
+Conventional name	ASCII type-code	Encoding
+BYTE	y (121)	Unsigned 8-bit integer
+BOOLEAN	b (98)	Boolean value: 0 is false, 1 is true, any other value allowed by the marshalling format is invalid
+INT16	n (110)	Signed (two's complement) 16-bit integer
+UINT16	q (113)	Unsigned 16-bit integer
+INT32	i (105)	Signed (two's complement) 32-bit integer
+UINT32	u (117)	Unsigned 32-bit integer
+INT64	x (120)	Signed (two's complement) 64-bit integer (mnemonic: x and t are the first characters in "sixty" not already used for something more common)
+UINT64	t (116)	Unsigned 64-bit integer
+DOUBLE	d (100)	IEEE 754 double-precision floating point
+UNIX_FD	h (104)	Unsigned 32-bit integer representing an index into an out-of-band array of file descriptors, transferred via some platform-specific mechanism (mnemonic: h for handle)
+
+From <https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-marshaling-object-path> 
+
+The characteristics of the string-like types are listed in this table.
+Conventional name	ASCII type-code	Validity constraints
+STRING	s (115)	No extra constraints
+OBJECT_PATH	o (111)	Must be a syntactically valid object path
+SIGNATURE	g (103)	Zero or more single complete types
+
+From <https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-marshaling-object-path> 
+
+
+
+Summary of types
+The following table summarizes the D-Bus types.
+Category	Conventional Name	Code	Description
+reserved	INVALID	0 (ASCII NUL)	Not a valid type code, used to terminate signatures
+fixed, basic	BYTE	121 (ASCII 'y')	8-bit unsigned integer
+fixed, basic	BOOLEAN	98 (ASCII 'b')	Boolean value, 0 is FALSE and 1 is TRUE. Everything else is invalid.
+fixed, basic	INT16	110 (ASCII 'n')	16-bit signed integer
+fixed, basic	UINT16	113 (ASCII 'q')	16-bit unsigned integer
+fixed, basic	INT32	105 (ASCII 'i')	32-bit signed integer
+fixed, basic	UINT32	117 (ASCII 'u')	32-bit unsigned integer
+fixed, basic	INT64	120 (ASCII 'x')	64-bit signed integer
+fixed, basic	UINT64	116 (ASCII 't')	64-bit unsigned integer
+fixed, basic	DOUBLE	100 (ASCII 'd')	IEEE 754 double
+string-like, basic	STRING	115 (ASCII 's')	UTF-8 string (must be valid UTF-8). Must be nul terminated and contain no other nul bytes.
+string-like, basic	OBJECT_PATH	111 (ASCII 'o')	Name of an object instance
+string-like, basic	SIGNATURE	103 (ASCII 'g')	A type signature
+container	ARRAY	97 (ASCII 'a')	Array
+container	STRUCT	114 (ASCII 'r'), 40 (ASCII '('), 41 (ASCII ')')	Struct; type code 114 'r' is reserved for use in bindings and implementations to represent the general concept of a struct, and must not appear in signatures used on D-Bus.
+container	VARIANT	118 (ASCII 'v')	Variant type (the type of the value is part of the value itself)
+container	DICT_ENTRY	101 (ASCII 'e'), 123 (ASCII '{'), 125 (ASCII '}')	Entry in a dict or map (array of key-value pairs). Type code 101 'e' is reserved for use in bindings and implementations to represent the general concept of a dict or dict-entry, and must not appear in signatures used on D-Bus.
+fixed, basic	UNIX_FD	104 (ASCII 'h')	Unix file descriptor
+reserved	(reserved)	109 (ASCII 'm')	Reserved for a 'maybe' type compatible with the one in GVariant, and must not appear in signatures used on D-Bus until specified here
+reserved	(reserved)	42 (ASCII '*')	Reserved for use in bindings/implementations to represent any single complete type, and must not appear in signatures used on D-Bus.
+reserved	(reserved)	63 (ASCII '?')	Reserved for use in bindings/implementations to represent any basic type, and must not appear in signatures used on D-Bus.
+reserved	(reserved)	64 (ASCII '@'), 38 (ASCII '&'), 94 (ASCII '^')	Reserved for internal use by bindings/implementations, and must not appear in signatures used on D-Bus. GVariant uses these type-codes to encode calling conventions.
+
+
