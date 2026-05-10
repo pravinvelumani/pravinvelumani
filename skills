@@ -11,3 +11,27 @@ CPP
 DSA
 Multithread concepts
 
+
+
+pointers (linked list)
+struture, unioin
+string manipluation
+storage class 
+memory segments (heap, stack)
+call by refrence,  call by value
+symbol table, mmap, paging, segmentation
+swapping
+array optimzation
+tree, binary search tree
+
+middle node
+loop detection in linked list
+find both linked list intersected  or not
+
+
+states of process
+memory mapping, process management
+internal/external fragmentation
+
+
+ipc mechanism 
